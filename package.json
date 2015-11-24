@@ -1,0 +1,27 @@
+{
+  "name": "sails-hook-slugs",
+  "version": "0.0.0",
+  "description": "A hook for Sails to handle slugs in your models.",
+  "main": "dist/index.js",
+  "scripts": {
+    "babel": "babel lib --out-dir dist/lib",
+    "pretest": "npm run babel",
+    "test": "mocha test/bootstrap.test.js --compilers js:babel-core/register",
+    "prepublish": "npm run babel"
+  },
+  "keywords": [
+    "sails",
+    "sailsjs",
+    "hook"
+  ],
+  "author": "Jérémie Ledentu <jledentu@gmail.com>",
+  "license": "MIT",
+  "sails": {
+    "isHook": true
+  },
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "mocha": "^2.3.4",
+    "should": "^7.1.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "esnext": true,
+  "requireTrailingComma": false,
+  "disallowTrailingWhitespace": true,
+  "disallowMultipleSpaces": true,
+  "requireCapitalizedConstructors": true,
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "try",
+    "catch",
+    "case",
+    "default"
+  ]
+}
