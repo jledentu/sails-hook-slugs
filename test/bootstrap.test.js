@@ -1,7 +1,9 @@
-var Sails = require('sails').Sails;
+var Sails = require('sails');
 
 before(function(done) {
-  this.timeout(30000);
+
+  console.log('before');
+  this.timeout(50000);
   let config = {
     log: {
       level: 'info'
@@ -13,7 +15,7 @@ before(function(done) {
     }
   };
 
-  Sails().lift(config, function (err, sails) {
+  Sails.lift(config, function (err, sails) {
     if (err) {
       return done(err);
     }
