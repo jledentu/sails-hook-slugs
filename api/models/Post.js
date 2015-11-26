@@ -19,6 +19,6 @@ module.exports = {
   },
 
   slug: {
-    attribute: 'title'
+    from: 'title'
   }
 };

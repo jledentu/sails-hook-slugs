@@ -1,3 +1,4 @@
+require('should');
 var Sails = require('sails');
 
 before(function(done) {
@@ -12,6 +13,9 @@ before(function(done) {
       slugs: require('../'),
       grunt: false,
       views: false
+    },
+    models: {
+      migrate: 'drop'
     }
   };
 

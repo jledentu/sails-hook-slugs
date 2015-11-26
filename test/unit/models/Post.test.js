@@ -1,3 +1,5 @@
+var should = require('should');
+
 describe('PostModel', function() {
 
   describe('#create()', function() {
@@ -5,11 +7,15 @@ describe('PostModel', function() {
       Post.create({
         title: 'This is a new post!!!',
         content: 'Post content'
-      }).then(function(post) {
-          post.title.should.be.eql('This is a new post!!!');
-          done();
-        })
-        .catch(done);
+      })
+      .populate('currentSlug')
+      .then(function(post) {
+        should.exist(post.currentSlug);
+        post.title.should.be.eql('This is a new post!!!');
+        should.exist(post.currentSlug);
+        done();
+      })
+      .catch(done);
     });
   });
 });
