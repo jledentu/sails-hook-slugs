@@ -1,4 +1,4 @@
-var should = require('should');
+import should from 'should';
 
 describe('PostModel', function() {
 
@@ -8,11 +8,10 @@ describe('PostModel', function() {
         title: 'This is a new post!!!',
         content: 'Post content'
       })
-      .populate('currentSlug')
       .then(function(post) {
-        should.exist(post.currentSlug);
         post.title.should.be.eql('This is a new post!!!');
-        should.exist(post.currentSlug);
+        post.slug.should.be.a.String();
+        post.slug.should.be.eql('This-is-a-new-post');
         done();
       })
       .catch(done);
