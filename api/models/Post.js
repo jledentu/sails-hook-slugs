@@ -13,12 +13,19 @@ module.exports = {
       required: true,
       unique: true
     },
+    author: {
+      type: 'string'
+    },
     content: {
       type: 'text'
+    },
+    slug: {
+      type: 'slug',
+      from: 'title'
+    },
+    slugAuthor: {
+      type: 'slug',
+      from: 'author'
     }
-  },
-
-  slug: {
-    from: 'title'
   }
 };
