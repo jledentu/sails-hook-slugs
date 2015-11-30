@@ -1,6 +1,6 @@
 # sails-hook-slugs
 
-[![Build Status](https://travis-ci.org/jledentu/sails-hook-slugs.svg?branch=develop)](https://travis-ci.org/jledentu/sails-hook-slugs)
+[![Build Status](https://travis-ci.org/jledentu/sails-hook-slugs.svg?branch=master)](https://travis-ci.org/jledentu/sails-hook-slugs)
 
 This [Sails.js](https://github.com/balderdashy/sails) hook generates URL-friendly slugs in your models.
 
