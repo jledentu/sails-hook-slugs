@@ -55,6 +55,18 @@ Post.create({
 });
 ```
 
+If a record of the same model has the same slug, a UUID is added at the end of the new slug:
+
+```js
+Post.create({
+  title: 'This is a new post!!!!',
+  content: 'A new post again'
+})
+.then(function(post) {
+  console.log(post.slug); // 'This-is-a-new-posta50ec97e-9ae1-44a5-8fb2-81c665b61538'
+});
+```
+
 Like any other attribute, you can use dynamic finders:
 
 ```js

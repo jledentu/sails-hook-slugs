@@ -29,6 +29,33 @@ describe('PostModel', function() {
       })
       .catch(done);
     });
+
+    it('should resolve slug conflicts', function(done) {
+      Post.create({
+        title: 'This is a new post!!',
+        content: 'Post content 2',
+        author: 'Jérémie Ledentu'
+      })
+      .then(function(post) {
+        post.should.have.property('title');
+        post.title.should.be.a.String();
+        post.title.should.be.eql('This is a new post!!');
+
+        post.should.have.property('author');
+        post.author.should.be.a.String();
+        post.author.should.be.eql('Jérémie Ledentu');
+
+        post.should.have.property('slug');
+        post.slug.should.be.a.String();
+        post.slug.should.not.be.eql('This-is-a-new-post');
+
+        post.should.have.property('slugAuthor');
+        post.slugAuthor.should.be.a.String();
+        post.slugAuthor.should.not.be.eql('Jeremie-Ledentu');
+        done();
+      })
+      .catch(done);
+    });
   });
 
   describe('#findOneBySlug()', function() {
