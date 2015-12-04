@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-slugs",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A hook for Sails to handle slugs in your models.",
   "main": "dist/lib/index.js",
   "scripts": {
