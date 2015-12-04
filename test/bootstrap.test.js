@@ -3,7 +3,6 @@ var Sails = require('sails');
 
 before(function(done) {
 
-  console.log('before');
   this.timeout(50000);
   let config = {
     log: {
