@@ -20,11 +20,11 @@ describe('PostModel', function() {
 
         post.should.have.property('slug');
         post.slug.should.be.a.String();
-        post.slug.should.be.eql('This-is-a-new-post');
+        post.slug.should.be.eql('this-is-a-new-post');
 
         post.should.have.property('slugAuthor');
         post.slugAuthor.should.be.a.String();
-        post.slugAuthor.should.be.eql('Jeremie-Ledentu');
+        post.slugAuthor.should.be.eql('jeremie-ledentu');
         done();
       })
       .catch(done);
@@ -47,11 +47,11 @@ describe('PostModel', function() {
 
         post.should.have.property('slug');
         post.slug.should.be.a.String();
-        post.slug.should.not.be.eql('This-is-a-new-post');
+        post.slug.should.not.be.eql('this-is-a-new-post');
 
         post.should.have.property('slugAuthor');
         post.slugAuthor.should.be.a.String();
-        post.slugAuthor.should.not.be.eql('Jeremie-Ledentu');
+        post.slugAuthor.should.not.be.eql('jeremie-ledentu');
         done();
       })
       .catch(done);
@@ -66,13 +66,13 @@ describe('PostModel', function() {
     });
 
     it('should return the entity with given slug', function(done) {
-      Post.findOneBySlug('This-is-a-new-post')
+      Post.findOneBySlug('this-is-a-new-post')
       .then(function(post) {
         post.should.have.property('title');
         post.title.should.be.a.String();
         post.title.should.be.eql('This is a new post!!!');
         post.slug.should.be.a.String();
-        post.slug.should.be.eql('This-is-a-new-post');
+        post.slug.should.be.eql('this-is-a-new-post');
         done();
       })
       .catch(done);

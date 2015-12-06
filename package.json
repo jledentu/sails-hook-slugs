@@ -6,7 +6,7 @@
   "scripts": {
     "babel": "babel lib --out-dir dist/lib",
     "pretest": "npm run babel",
-    "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js --compilers js:babel-core/register",
+    "test": "mocha test/bootstrap.test.js test/unit/*.test.js test/unit/**/*.test.js --compilers js:babel-core/register",
     "prepublish": "npm run babel"
   },
   "keywords": [
