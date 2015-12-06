@@ -51,7 +51,7 @@ Post.create({
   content: 'Post content'
 })
 .then(function(post) {
-  console.log(post.slug); // 'This-is-a-new-post'
+  console.log(post.slug); // 'this-is-a-new-post'
 });
 ```
 
@@ -63,14 +63,14 @@ Post.create({
   content: 'A new post again'
 })
 .then(function(post) {
-  console.log(post.slug); // 'This-is-a-new-posta50ec97e-9ae1-44a5-8fb2-81c665b61538'
+  console.log(post.slug); // 'this-is-a-new-posta50ec97e-9ae1-44a5-8fb2-81c665b61538'
 });
 ```
 
 Like any other attribute, you can use dynamic finders:
 
 ```js
-Post.findOneBySlug('This-is-a-new-post')
+Post.findOneBySlug('this-is-a-new-post')
 .then(function(post) {
   // Use the post
 })
@@ -78,6 +78,14 @@ Post.findOneBySlug('This-is-a-new-post')
   // ...
 });
 ```
+
+## Configuration
+
+These parameters can be changed in `sails.config.slugs`:
+
+Parameter      | Type                | Details
+-------------- | ------------------- |:---------------------------------
+lowercase | `boolean` | Whether or not the generated slugs are lowercased. Defaults to `true`.
 
 ## License
 
