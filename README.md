@@ -63,7 +63,7 @@ Post.create({
   content: 'A new post again'
 })
 .then(function(post) {
-  console.log(post.slug); // 'this-is-a-new-posta50ec97e-9ae1-44a5-8fb2-81c665b61538'
+  console.log(post.slug); // 'this-is-a-new-post-a50ec97e-9ae1-44a5-8fb2-81c665b61538'
 });
 ```
 
