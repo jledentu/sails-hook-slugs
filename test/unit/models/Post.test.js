@@ -48,6 +48,7 @@ describe('PostModel', function() {
         post.should.have.property('slug');
         post.slug.should.be.a.String();
         post.slug.should.not.be.eql('this-is-a-new-post');
+        post.slug.should.match(/^this-is-a-new-post-/);
 
         post.should.have.property('slugAuthor');
         post.slugAuthor.should.be.a.String();
