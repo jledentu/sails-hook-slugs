@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "node-uuid": "^1.4.7",
-    "require-all": "^2.0.0",
     "slug": "^0.9.1"
   }
 }
