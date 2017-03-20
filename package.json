@@ -31,7 +31,7 @@
     "should": "^7.1.1"
   },
   "dependencies": {
-    "node-uuid": "^1.4.7",
-    "slug": "^0.9.1"
+    "slug": "^0.9.1",
+    "uuid": "^3.0.1"
   }
 }
