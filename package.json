@@ -7,7 +7,8 @@
     "babel": "babel lib --out-dir dist/lib",
     "pretest": "npm run babel",
     "test": "mocha test/bootstrap.test.js test/unit/*.test.js test/unit/**/*.test.js --compilers js:babel-core/register",
-    "prepublish": "npm run babel"
+    "prepublish": "npm run babel",
+    "lint": "eslint lib"
   },
   "keywords": [
     "sails",
@@ -23,6 +24,7 @@
     "babel-cli": "^6.2.0",
     "babel-core": "^6.2.1",
     "babel-preset-env": "^1.2.2",
+    "eslint": "^3.18.0",
     "mocha": "^2.3.4",
     "sails": "^0.11.3",
     "sails-disk": "^0.10.8",
