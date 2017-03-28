@@ -25,7 +25,8 @@ module.exports = {
     },
     slugAuthor: {
       type: 'slug',
-      from: 'author'
+      from: 'author',
+      blacklist: ['profile']
     }
   }
 };

@@ -47,15 +47,46 @@ describe('PostModel', function() {
 
         post.should.have.property('slug');
         post.slug.should.be.a.String();
-        post.slug.should.not.be.eql('this-is-a-new-post');
         post.slug.should.match(/^this-is-a-new-post-/);
 
         post.should.have.property('slugAuthor');
         post.slugAuthor.should.be.a.String();
-        post.slugAuthor.should.not.be.eql('jeremie-ledentu');
+        post.slugAuthor.should.match(/^jeremie-ledentu-/);
         done();
       })
       .catch(done);
+    });
+
+    it('should not use a slug from global blacklist', (done) => {
+      sails.config.slugs.blacklist = ['new'];
+      Post.create({
+        title: 'New',
+        author: 'Jérémie Ledentu'
+      })
+      .then((post) => {
+        post.should.have.property('slug');
+        post.slug.should.be.a.String();
+        post.slug.should.match(/^new-/);
+
+        post.should.have.property('author');
+        post.author.should.be.a.String();
+        post.slugAuthor.should.match(/^jeremie-ledentu-/);
+
+        done();
+      });
+    });
+
+    it('should not use a slug from local blacklist', (done) => {
+      Post.create({
+        title: 'My new post',
+        author: 'Profile'
+      })
+      .then((post) => {
+        post.should.have.property('author');
+        post.slugAuthor.should.match(/^profile-/);
+
+        done();
+      });
     });
   });
 
