@@ -6,9 +6,21 @@ node_js:
 - '7'
 env:
 - CXX=g++-4.8
+before_install:
+  - wget http://unicode.org/Public/UNIDATA/UnicodeData.txt -O /tmp/UnicodeData.txt
+  - export NODE_UNICODETABLE_UNICODEDATA_TXT=/tmp/UnicodeData.txt
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
     packages:
     - g++-4.8
+deploy:
+  provider: npm
+  email: jledentu@gmail.com
+  api_key:
+    secure: HaUooYs1t9OSYUD7sRkFm3uR307r+Ze0qx59E3tlBCp3Cm86yt1k3dRR7FqexDt6Gspn5wR1m59JfYtJ3a3137CryTCDjEGmBfpFBWb7+e7wg/NiSNVbyH+R8vk3kxEhv7Llzv8dKk/ZOiMyEMGyynd6GmUtAanmh2N/I/bEpq+KfVySdxFKBN+6iL0ppjB0Kq7TkYZ3IrGTkHH2BsAXZPinMFapeG1WVUkM3yrNmRZiaBRb5Kvxn74dz2BfoRybY9Am9oIgOZCjqmhio/rdTLSQ03/Hgs4zEkUKHbbDkNi9amqF1LR9TmA7a3Z9cnPtMX7kTo0N8iOml0G5qBdmdMJrqaeHU3n4DHV6PjUq18qJaJngdbAmPnr5YaUzZzzp3ESK/NlWv76O50WkLN2t5SzaS39a4kRzJfPKbJRjfrmak/AGUpYxKilhnbeGKWIEWhyQjUlA2ekUqChCDpsn8SHBZnZTvYf4tioYhN1kVNYY9EroygUAGgw3HigIgGK982hY55TVdTQO+3pl2LPwarqbQMqNHdAVnbiODKtr7wukieyuRo/lBMFj+aANqZdbw9VDdve1iTChvhDEHZyBl7IUJTWOp6ajzrKFmYSpNyFw5rSi9ur3k3knqAr3NqQlNHp6iBR+JwlGQPs/cqtUpyz5ZDFb5Asm1DEzms/uTlU=
+  on:
+    branch: master
+    tags: true
+    repo: jledentu/sails-hook-slugs
