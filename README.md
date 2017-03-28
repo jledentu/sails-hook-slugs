@@ -1,8 +1,13 @@
 # sails-hook-slugs
 
-[![Build Status](https://travis-ci.org/jledentu/sails-hook-slugs.svg?branch=master)](https://travis-ci.org/jledentu/sails-hook-slugs)
+[![Build Status](https://travis-ci.org/jledentu/sails-hook-slugs.svg?branch=master)](https://travis-ci.org/jledentu/sails-hook-slugs) [![dependencies Status](https://david-dm.org/jledentu/sails-hook-slugs/status.svg)](https://david-dm.org/jledentu/sails-hook-slugs) [![npm](https://img.shields.io/npm/v/sails-hook-slugs.svg)](https://www.npmjs.com/package/sails-hook-slugs)
 
 This [Sails.js](https://github.com/balderdashy/sails) hook generates URL-friendly slugs in your models.
+
+```
+http://www.myblog.com/post/233987
+-> http://www.myblog.com/post/title-of-my-blog-post
+```
 
 ## Installation
 
@@ -32,7 +37,8 @@ module.exports = {
     },
     slug: {
       type: 'slug',
-      from: 'title'
+      from: 'title',
+      blacklist: ['search']
     }
   }
 };
@@ -41,6 +47,7 @@ module.exports = {
 Configure your slug attribute:
 
 * `from`: name of the attribute from which the slug will be defined (required)
+* `blacklist`: A list of reserved words to not use as this slug (optional)
 
 
 A `slug` attribute is automatically set when you create a record:
@@ -86,7 +93,8 @@ These parameters can be changed in `sails.config.slugs`:
 Parameter      | Type                | Details
 -------------- | ------------------- |:---------------------------------
 lowercase | `boolean` | Whether or not the generated slugs are lowercased. Defaults to `true`.
+blacklist | `Array<string>` | A list of reserved words to not use as slugs in your application. Defaults to `[]`.
 
 ## License
 
-MIT © 2015 Jérémie Ledentu
+MIT © 2017 Jérémie Ledentu
