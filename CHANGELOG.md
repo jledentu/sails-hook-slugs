@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased]
+### Added
+Add property `blacklist` in `sails.config.slugs` and model attributes to exclude names from slugs.
+### Changed
+- Replace JSCS + JSHint by ESLint
+- Replace node-uuid by uuid
+- Remove require-all and Lodash dependencies
+
 ## [2.0.0] - 2017-03-19
 ### Changed
 When a slug already exists, a dash is added between the slug and the UUID (thanks @thibaultboursier).
