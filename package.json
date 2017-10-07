@@ -5,10 +5,10 @@
   "main": "dist/lib/index.js",
   "scripts": {
     "babel": "babel lib --out-dir dist/lib",
-    "pretest": "npm run babel",
-    "test": "mocha test/bootstrap.test.js test/unit/*.test.js test/unit/**/*.test.js --compilers js:babel-core/register",
+    "test": "cross-env NODE_ENV=test nyc --reporter=text mocha test/bootstrap.test.js test/unit/*.test.js test/unit/**/*.test.js --compilers js:babel-core/register",
     "prepublish": "npm run babel",
-    "lint": "eslint lib"
+    "lint": "eslint lib",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "sails",
@@ -20,12 +20,20 @@
   "sails": {
     "isHook": true
   },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  },
   "devDependencies": {
     "babel-cli": "^6.2.0",
     "babel-core": "^6.2.1",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.2.2",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.0.5",
     "eslint": "^4.8.0",
     "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
     "sails": "^0.12.14",
     "sails-disk": "^0.10.8",
     "should": "^13.1.1"
