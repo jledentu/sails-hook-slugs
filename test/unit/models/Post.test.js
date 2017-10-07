@@ -98,6 +98,26 @@ describe('PostModel', function() {
       })
       .catch(done);
     });
+
+    it('should use separator defined in config', done => {
+      sails.config.slugs.separator = '_';
+
+      Post.create({
+        title: 'This is underscore',
+        content: 'Post content',
+        author: 'Jérémie Ledentu'
+      })
+      .then(post => {
+        post.should.have.property('slug');
+        post.slug.should.eql('this_is_underscore');
+        post.slugAuthor.should.eql('jeremie_ledentu');
+
+        sails.config.slugs.separator = '-';
+
+        done();
+      })
+      .catch(done);
+    });
   });
 
   describe('#findOneBySlug()', function() {

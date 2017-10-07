@@ -94,6 +94,7 @@ Parameter      | Type                | Details
 -------------- | ------------------- |:---------------------------------
 lowercase | `boolean` | Whether or not the generated slugs are lowercased. Defaults to `true`.
 blacklist | `Array<string>` | A list of reserved words to not use as slugs in your application. Defaults to `[]`.
+separator | `string` | Separator to use in slugs. Defaults to `-`.
 
 ## License
 
