@@ -1,6 +1,6 @@
 # sails-hook-slugs
 
-[![Build Status](https://travis-ci.org/jledentu/sails-hook-slugs.svg?branch=develop)](https://travis-ci.org/jledentu/sails-hook-slugs?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/jledentu/sails-hook-slugs/badge.svg?branch=develop)](https://coveralls.io/github/jledentu/sails-hook-slugs?branch=develop) [![dependencies Status](https://david-dm.org/jledentu/sails-hook-slugs/status.svg)](https://david-dm.org/jledentu/sails-hook-slugs) [![npm](https://img.shields.io/npm/v/sails-hook-slugs.svg)](https://www.npmjs.com/package/sails-hook-slugs)
+[![Build Status](https://travis-ci.org/jledentu/sails-hook-slugs.svg)](https://travis-ci.org/jledentu/sails-hook-slugs) [![Coverage Status](https://coveralls.io/repos/github/jledentu/sails-hook-slugs/badge.svg)](https://coveralls.io/github/jledentu/sails-hook-slugs) [![dependencies Status](https://david-dm.org/jledentu/sails-hook-slugs/status.svg)](https://david-dm.org/jledentu/sails-hook-slugs) [![npm](https://img.shields.io/npm/v/sails-hook-slugs.svg)](https://www.npmjs.com/package/sails-hook-slugs)
 
 This [Sails.js](https://github.com/balderdashy/sails) hook generates URL-friendly slugs in your models.
 
