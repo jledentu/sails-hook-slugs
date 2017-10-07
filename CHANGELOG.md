@@ -1,5 +1,12 @@
 # Change Log
 
+## [3.0.0] - 2017-10-08
+### Added
+Add property `separator` in `sails.config.slugs` to specify separator to use in slugs.
+### Changed
+- Replace slug by slugg
+- Indicate code coverage
+
 ## [2.1.0] - 2017-03-29
 ### Added
 Add property `blacklist` in `sails.config.slugs` and model attributes to exclude names from slugs.

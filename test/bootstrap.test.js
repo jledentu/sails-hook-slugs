@@ -9,7 +9,7 @@ before(function(done) {
       level: 'info'
     },
     hooks: {
-      slugs: require('../'),
+      slugs: require('../lib'),
       grunt: false,
       views: false
     },

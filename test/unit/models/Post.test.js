@@ -11,20 +11,16 @@ describe('PostModel', function() {
       })
       .then(function(post) {
         post.should.have.property('title');
-        post.title.should.be.a.String();
-        post.title.should.be.eql('This is a new post!!!');
+        post.title.should.eql('This is a new post!!!');
 
         post.should.have.property('author');
-        post.author.should.be.a.String();
-        post.author.should.be.eql('Jérémie Ledentu');
+        post.author.should.eql('Jérémie Ledentu');
 
         post.should.have.property('slug');
-        post.slug.should.be.a.String();
-        post.slug.should.be.eql('this-is-a-new-post');
+        post.slug.should.eql('this-is-a-new-post');
 
         post.should.have.property('slugAuthor');
-        post.slugAuthor.should.be.a.String();
-        post.slugAuthor.should.be.eql('jeremie-ledentu');
+        post.slugAuthor.should.eql('jeremie-ledentu');
         done();
       })
       .catch(done);
@@ -38,19 +34,15 @@ describe('PostModel', function() {
       })
       .then(function(post) {
         post.should.have.property('title');
-        post.title.should.be.a.String();
-        post.title.should.be.eql('This is a new post!!');
+        post.title.should.eql('This is a new post!!');
 
         post.should.have.property('author');
-        post.author.should.be.a.String();
-        post.author.should.be.eql('Jérémie Ledentu');
+        post.author.should.eql('Jérémie Ledentu');
 
         post.should.have.property('slug');
-        post.slug.should.be.a.String();
         post.slug.should.match(/^this-is-a-new-post-/);
 
         post.should.have.property('slugAuthor');
-        post.slugAuthor.should.be.a.String();
         post.slugAuthor.should.match(/^jeremie-ledentu-/);
         done();
       })
@@ -65,11 +57,9 @@ describe('PostModel', function() {
       })
       .then((post) => {
         post.should.have.property('slug');
-        post.slug.should.be.a.String();
         post.slug.should.match(/^new-/);
 
         post.should.have.property('author');
-        post.author.should.be.a.String();
         post.slugAuthor.should.match(/^jeremie-ledentu-/);
 
         done();
@@ -88,6 +78,46 @@ describe('PostModel', function() {
         done();
       });
     });
+
+    it('should not use lowercase if lowercase === false in the config', done => {
+      sails.config.slugs.lowercase = false;
+
+      Post.create({
+        title: 'THIS IS A TITLE IN UPPERCASE',
+        content: 'Post content',
+        author: 'Jérémie Ledentu'
+      })
+      .then(post => {
+        post.should.have.property('slug');
+        post.slug.should.eql('THIS-IS-A-TITLE-IN-UPPERCASE');
+        post.slugAuthor.should.match(/^Jeremie-Ledentu-/);
+
+        sails.config.slugs.lowercase = true;
+
+        done();
+      })
+      .catch(done);
+    });
+
+    it('should use separator defined in config', done => {
+      sails.config.slugs.separator = '_';
+
+      Post.create({
+        title: 'This is underscore',
+        content: 'Post content',
+        author: 'Jérémie Ledentu'
+      })
+      .then(post => {
+        post.should.have.property('slug');
+        post.slug.should.eql('this_is_underscore');
+        post.slugAuthor.should.eql('jeremie_ledentu');
+
+        sails.config.slugs.separator = '-';
+
+        done();
+      })
+      .catch(done);
+    });
   });
 
   describe('#findOneBySlug()', function() {
@@ -101,10 +131,8 @@ describe('PostModel', function() {
       Post.findOneBySlug('this-is-a-new-post')
       .then(function(post) {
         post.should.have.property('title');
-        post.title.should.be.a.String();
-        post.title.should.be.eql('This is a new post!!!');
-        post.slug.should.be.a.String();
-        post.slug.should.be.eql('this-is-a-new-post');
+        post.title.should.eql('This is a new post!!!');
+        post.slug.should.eql('this-is-a-new-post');
         done();
       })
       .catch(done);
