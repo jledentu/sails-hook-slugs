@@ -4,11 +4,12 @@ describe('PostModel', function() {
 
   describe('#create()', function() {
     it('should create a new post', function(done) {
-      Post.create({
+      sails.models.post.create({
         title: 'This is a new post!!!',
         content: 'Post content',
         author: 'Jérémie Ledentu'
       })
+      .fetch()
       .then(function(post) {
         post.should.have.property('title');
         post.title.should.eql('This is a new post!!!');
@@ -27,11 +28,12 @@ describe('PostModel', function() {
     });
 
     it('should resolve slug conflicts', function(done) {
-      Post.create({
+      sails.models.post.create({
         title: 'This is a new post!!',
         content: 'Post content 2',
         author: 'Jérémie Ledentu'
       })
+      .fetch()
       .then(function(post) {
         post.should.have.property('title');
         post.title.should.eql('This is a new post!!');
@@ -51,10 +53,11 @@ describe('PostModel', function() {
 
     it('should not use a slug from global blacklist', (done) => {
       sails.config.slugs.blacklist = ['new'];
-      Post.create({
+      sails.models.post.create({
         title: 'New',
         author: 'Jérémie Ledentu'
       })
+      .fetch()
       .then((post) => {
         post.should.have.property('slug');
         post.slug.should.match(/^new-/);
@@ -67,10 +70,11 @@ describe('PostModel', function() {
     });
 
     it('should not use a slug from local blacklist', (done) => {
-      Post.create({
+      sails.models.post.create({
         title: 'My new post',
         author: 'Profile'
       })
+      .fetch()
       .then((post) => {
         post.should.have.property('author');
         post.slugAuthor.should.match(/^profile-/);
@@ -82,15 +86,16 @@ describe('PostModel', function() {
     it('should not use lowercase if lowercase === false in the config', done => {
       sails.config.slugs.lowercase = false;
 
-      Post.create({
+      sails.models.post.create({
         title: 'THIS IS A TITLE IN UPPERCASE',
         content: 'Post content',
         author: 'Jérémie Ledentu'
       })
+      .fetch()
       .then(post => {
         post.should.have.property('slug');
         post.slug.should.eql('THIS-IS-A-TITLE-IN-UPPERCASE');
-        post.slugAuthor.should.match(/^Jeremie-Ledentu-/);
+        post.slugAuthor.should.eql('Jeremie-Ledentu');
 
         sails.config.slugs.lowercase = true;
 
@@ -102,11 +107,12 @@ describe('PostModel', function() {
     it('should use separator defined in config', done => {
       sails.config.slugs.separator = '_';
 
-      Post.create({
+      sails.models.post.create({
         title: 'This is underscore',
         content: 'Post content',
         author: 'Jérémie Ledentu'
       })
+      .fetch()
       .then(post => {
         post.should.have.property('slug');
         post.slug.should.eql('this_is_underscore');
@@ -120,15 +126,9 @@ describe('PostModel', function() {
     });
   });
 
-  describe('#findOneBySlug()', function() {
-    it('should exist in the model', function(done) {
-      Post.should.have.property('findBySlug');
-      Post.findOneBySlug.should.be.a.Function();
-      done();
-    });
-
+  describe('#findOne({slug})', function() {
     it('should return the entity with given slug', function(done) {
-      Post.findOneBySlug('this-is-a-new-post')
+      sails.models.post.findOne({ slug: 'this-is-a-new-post' })
       .then(function(post) {
         post.should.have.property('title');
         post.title.should.eql('This is a new post!!!');

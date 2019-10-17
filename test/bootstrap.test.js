@@ -1,12 +1,12 @@
 require('should');
-var Sails = require('sails');
+var sails = require('sails');
 
 before(function(done) {
 
   this.timeout(50000);
   let config = {
     log: {
-      level: 'info'
+      level: 'verbose'
     },
     hooks: {
       slugs: require('../lib'),
@@ -18,14 +18,15 @@ before(function(done) {
     }
   };
 
-  Sails.lift(config, function (err, sails) {
+  sails.lift(config, function (err) {
     if (err) {
       return done(err);
     }
+    global.sails = sails;
     return done();
   });
 });
 
 after(function(done) {
-  Sails.lower(done);
+  sails.lower(done);
 });
