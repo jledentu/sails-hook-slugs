@@ -74,10 +74,10 @@ Post.create({
 });
 ```
 
-Like any other attribute, you can use dynamic finders:
+Like any other attribute, you can use it as criteria to find a given resource:
 
 ```js
-Post.findOneBySlug('this-is-a-new-post')
+Post.findOne({ slug: 'this-is-a-new-post' })
 .then(function(post) {
   // Use the post
 })
@@ -98,4 +98,4 @@ separator | `string` | Separator to use in slugs. Defaults to `-`.
 
 ## License
 
-MIT © 2017 Jérémie Ledentu
+MIT © 2019 Jérémie Ledentu

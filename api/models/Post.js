@@ -6,8 +6,8 @@
 */
 
 module.exports = {
-
   attributes: {
+    id: { type: 'number', autoIncrement: true},
     title: {
       type: 'string',
       required: true,
@@ -17,7 +17,7 @@ module.exports = {
       type: 'string'
     },
     content: {
-      type: 'text'
+      type: 'string'
     },
     slug: {
       type: 'slug',
